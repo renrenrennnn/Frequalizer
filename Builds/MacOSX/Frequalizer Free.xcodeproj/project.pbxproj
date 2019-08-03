@@ -73,10 +73,6 @@
 			isa = PBXBuildFile;
 			fileRef = 3DACCC6199F1784A252956BD;
 		};
-		029819FB2034B0519187F246 = {
-			isa = PBXBuildFile;
-			fileRef = FAD04E801DB4B8AD467D8A98;
-		};
 		1474CE05799E2CCCBB354591 = {
 			isa = PBXBuildFile;
 			fileRef = C99DBCAF8552DBCC8970BBD9;
@@ -84,10 +80,6 @@
 		4A1092DA7834FDE50A259817 = {
 			isa = PBXBuildFile;
 			fileRef = 1A01475812EA2BC7E09207B5;
-		};
-		4D83B8D567865AC89AD0ED7E = {
-			isa = PBXBuildFile;
-			fileRef = 3FCEE0E9BBD631D7EE35B084;
 		};
 		190131964EA9B7BECBB99AD1 = {
 			isa = PBXBuildFile;
@@ -211,13 +203,6 @@
 			path = System/Library/Frameworks/Cocoa.framework;
 			sourceTree = SDKROOT;
 		};
-		144D4C32600DDCFC2AFC0465 = {
-			isa = PBXFileReference;
-			lastKnownFileType = sourcecode.c.h;
-			name = SocialButtons.h;
-			path = ../../Source/SocialButtons.h;
-			sourceTree = "SOURCE_ROOT";
-		};
 		1893968F6F8BCC80B447E4E6 = {
 			isa = PBXFileReference;
 			lastKnownFileType = file;
@@ -230,13 +215,6 @@
 			lastKnownFileType = sourcecode.cpp.cpp;
 			name = FrequalizerEditor.cpp;
 			path = ../../Source/FrequalizerEditor.cpp;
-			sourceTree = "SOURCE_ROOT";
-		};
-		2085C7584D392D94C54CD730 = {
-			isa = PBXFileReference;
-			lastKnownFileType = image.png;
-			name = "FB-logo.png";
-			path = "../../Resources/FB-logo.png";
 			sourceTree = "SOURCE_ROOT";
 		};
 		24076CB5ACEC0327AB6426C9 = {
@@ -274,13 +252,6 @@
 			path = "../../JuceLibraryCode/include_juce_audio_basics.mm";
 			sourceTree = "SOURCE_ROOT";
 		};
-		39BE45DDCAEE97DFD8FE9542 = {
-			isa = PBXFileReference;
-			lastKnownFileType = sourcecode.c.h;
-			name = BinaryData.h;
-			path = ../../JuceLibraryCode/BinaryData.h;
-			sourceTree = "SOURCE_ROOT";
-		};
 		3BDE184CBD89F82BD3D72772 = {
 			isa = PBXFileReference;
 			lastKnownFileType = wrapper.framework;
@@ -301,13 +272,6 @@
 			name = "juce_audio_devices";
 			path = "/Applications/JUCE/modules/juce_audio_devices";
 			sourceTree = "<absolute>";
-		};
-		3FCEE0E9BBD631D7EE35B084 = {
-			isa = PBXFileReference;
-			lastKnownFileType = sourcecode.cpp.cpp;
-			name = BinaryData.cpp;
-			path = ../../JuceLibraryCode/BinaryData.cpp;
-			sourceTree = "SOURCE_ROOT";
 		};
 		436EA0B951BC603699C8F327 = {
 			isa = PBXFileReference;
@@ -371,13 +335,6 @@
 			name = "juce_cryptography";
 			path = "/Applications/JUCE/modules/juce_cryptography";
 			sourceTree = "<absolute>";
-		};
-		819AB599651C11E9EBEC900D = {
-			isa = PBXFileReference;
-			lastKnownFileType = image.png;
-			name = "GitHub-logo.png";
-			path = "../../Resources/GitHub-logo.png";
-			sourceTree = "SOURCE_ROOT";
 		};
 		8522F0125575C8320C1F6472 = {
 			isa = PBXFileReference;
@@ -491,13 +448,6 @@
 			path = "../../JuceLibraryCode/include_juce_audio_plugin_client_AU_2.mm";
 			sourceTree = "SOURCE_ROOT";
 		};
-		A43E41AF52357327DEF2FF9F = {
-			isa = PBXFileReference;
-			lastKnownFileType = image.png;
-			name = "FF-text.png";
-			path = "../../Resources/FF-text.png";
-			sourceTree = "SOURCE_ROOT";
-		};
 		B20A71FFE7E6FF7E933F82B6 = {
 			isa = PBXFileReference;
 			lastKnownFileType = file;
@@ -603,13 +553,6 @@
 			path = System/Library/Frameworks/CoreAudio.framework;
 			sourceTree = SDKROOT;
 		};
-		E285CB27CAA92136F186689A = {
-			isa = PBXFileReference;
-			lastKnownFileType = image.png;
-			name = "In-logo.png";
-			path = "../../Resources/In-logo.png";
-			sourceTree = "SOURCE_ROOT";
-		};
 		E3440912C4DAF35F3C22196C = {
 			isa = PBXFileReference;
 			lastKnownFileType = wrapper.framework;
@@ -652,20 +595,6 @@
 			path = "libFrequalizer Free.a";
 			sourceTree = "BUILT_PRODUCTS_DIR";
 		};
-		FAD04E801DB4B8AD467D8A98 = {
-			isa = PBXFileReference;
-			lastKnownFileType = file.icns;
-			name = Icon.icns;
-			path = Icon.icns;
-			sourceTree = "SOURCE_ROOT";
-		};
-		FC024B5E18C791A71928DB05 = {
-			isa = PBXFileReference;
-			lastKnownFileType = image.png;
-			name = "Logo-FF.png";
-			path = "../../Resources/Logo-FF.png";
-			sourceTree = "SOURCE_ROOT";
-		};
 		F586513B4FBAFA16C5354EFB = {
 			isa = PBXGroup;
 			children = (
@@ -674,28 +603,14 @@
 				47491E0524F0DA1808C5C3F7,
 				1A01475812EA2BC7E09207B5,
 				A08267E9D02DAAD2B35E1779,
-				144D4C32600DDCFC2AFC0465,
 			);
 			name = Source;
-			sourceTree = "<group>";
-		};
-		556BC1E31C93E4C014C6D2B1 = {
-			isa = PBXGroup;
-			children = (
-				FC024B5E18C791A71928DB05,
-				2085C7584D392D94C54CD730,
-				819AB599651C11E9EBEC900D,
-				E285CB27CAA92136F186689A,
-				A43E41AF52357327DEF2FF9F,
-			);
-			name = Resources;
 			sourceTree = "<group>";
 		};
 		6015CC279BFBB6496F709F2D = {
 			isa = PBXGroup;
 			children = (
 				F586513B4FBAFA16C5354EFB,
-				556BC1E31C93E4C014C6D2B1,
 			);
 			name = "Frequalizer Free";
 			sourceTree = "<group>";
@@ -726,8 +641,6 @@
 			isa = PBXGroup;
 			children = (
 				0FA796D74F929358D3E09E46,
-				3FCEE0E9BBD631D7EE35B084,
-				39BE45DDCAEE97DFD8FE9542,
 				35AC2012142342BDDDC4FB1C,
 				0540900C53FF76EEB254B4FC,
 				94BBA1B8408BB00292A8437B,
@@ -759,7 +672,6 @@
 				CAD62BDC8E1F8480A54D36E2,
 				BD37A148D074B01CCB0F3A02,
 				3DACCC6199F1784A252956BD,
-				FAD04E801DB4B8AD467D8A98,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -1259,7 +1171,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				9CF59A5E3D29412059FAE110,
-				029819FB2034B0519187F246,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1332,7 +1243,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				9CF59A5E3D29412059FAE110,
-				029819FB2034B0519187F246,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1394,7 +1304,6 @@
 			files = (
 				1474CE05799E2CCCBB354591,
 				4A1092DA7834FDE50A259817,
-				4D83B8D567865AC89AD0ED7E,
 				190131964EA9B7BECBB99AD1,
 				40C78378EDA217EE02F3CCD3,
 				3E5FB80A20D89EF53995D53F,

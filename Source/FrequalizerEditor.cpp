@@ -8,7 +8,7 @@
 
 #include "Analyser.h"
 #include "FrequalizerProcessor.h"
-#include "SocialButtons.h"
+//#include "SocialButtons.h"
 #include "FrequalizerEditor.h"
 
 static int   clickRadius = 4;
@@ -21,7 +21,7 @@ FrequalizerAudioProcessorEditor::FrequalizerAudioProcessorEditor (FrequalizerAud
 {
     tooltipWindow->setMillisecondsBeforeTipAppears (1000);
 
-    addAndMakeVisible (socialButtons);
+    //addAndMakeVisible (socialButtons);
 
     for (size_t i=0; i < processor.getNumBands(); ++i) {
         auto* bandEditor = bandEditors.add (new BandEditor (i, processor));
@@ -71,9 +71,9 @@ void FrequalizerAudioProcessorEditor::paint (Graphics& g)
 
     g.fillAll (getLookAndFeel().findColour (ResizableWindow::backgroundColourId));
 
-    auto logo = ImageCache::getFromMemory (FFAudioData::LogoFF_png, FFAudioData::LogoFF_pngSize);
+/*    auto logo = ImageCache::getFromMemory (FFAudioData::LogoFF_png, FFAudioData::LogoFF_pngSize);
     g.drawImage (logo, brandingFrame.toFloat(), RectanglePlacement (RectanglePlacement::fillDestination));
-
+ */
     g.setFont (12.0f);
     g.setColour (Colours::silver);
     g.drawRoundedRectangle (plotFrame.toFloat(), 5, 2);
@@ -125,6 +125,7 @@ void FrequalizerAudioProcessorEditor::paint (Graphics& g)
     }
     g.setColour (Colours::silver);
     g.strokePath (frequencyResponse, PathStrokeType (1.0));
+ 
 }
 
 void FrequalizerAudioProcessorEditor::resized()
@@ -132,7 +133,7 @@ void FrequalizerAudioProcessorEditor::resized()
     processor.setSavedSize ({ getWidth(), getHeight() });
     plotFrame = getLocalBounds().reduced (3, 3);
 
-    socialButtons.setBounds (plotFrame.removeFromBottom (35));
+    //socialButtons.setBounds (plotFrame.removeFromBottom (35));
 
     auto bandSpace = plotFrame.removeFromBottom (getHeight() / 2);
     auto width = roundToInt (bandSpace.getWidth()) / (bandEditors.size() + 1);

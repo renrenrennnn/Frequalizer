@@ -111,7 +111,7 @@ private:
     GroupComponent          frame;
     Slider                  output;
 
-    SocialButtons           socialButtons;
+    //SocialButtons           socialButtons;
 
     int                     draggingBand = -1;
     bool                    draggingGain = false;

@@ -8,7 +8,7 @@
 
 #include "Analyser.h"
 #include "FrequalizerProcessor.h"
-#include "SocialButtons.h"
+//#include "SocialButtons.h"
 #include "FrequalizerEditor.h"
 
 
@@ -71,12 +71,13 @@ AudioProcessorValueTreeState::ParameterLayout createParameterLayout()
     auto defaults = createDefaultBands();
 
     {
-        auto param = std::make_unique<AudioParameterFloat> (FrequalizerAudioProcessor::paramOutput, TRANS ("Output"),
-                                                            NormalisableRange<float> (0.0f, 2.0f, 0.01f), 1.0f,
-                                                            TRANS ("Output level"),
-                                                            AudioProcessorParameter::genericParameter,
-                                                            [](float value, int) {return String (Decibels::gainToDecibels(value), 1) + " dB";},
-                                                            [](String text) {return Decibels::decibelsToGain (text.dropLastCharacters (3).getFloatValue());});
+        auto param = std::make_unique<AudioParameterFloat> (FrequalizerAudioProcessor::paramOutput,
+            TRANS ("Output"),
+            NormalisableRange<float> (0.0f, 2.0f, 0.01f), 1.0f,
+            TRANS ("Output level"),
+            AudioProcessorParameter::genericParameter,
+            [](float value, int) {return String (Decibels::gainToDecibels(value), 1) + " dB";},
+            [](String text) {return Decibels::decibelsToGain (text.dropLastCharacters (3).getFloatValue());});
 
         auto group = std::make_unique<AudioProcessorParameterGroup> ("global", TRANS ("Globals"), "|", std::move (param));
         params.push_back (std::move (group));
@@ -85,55 +86,55 @@ AudioProcessorValueTreeState::ParameterLayout createParameterLayout()
     for (size_t i = 0; i < defaults.size(); ++i)
     {
         auto typeParameter = std::make_unique<AudioParameterChoice> (FrequalizerAudioProcessor::getTypeParamName (i),
-                                                                     TRANS ("Filter Type"),
-                                                                     FrequalizerAudioProcessor::getFilterTypeNames(),
-                                                                     defaults [i].type);
+            "Filter Type",
+            FrequalizerAudioProcessor::getFilterTypeNames(),
+            defaults [i].type);
 
-        auto freqParameter = std::make_unique<AudioParameterFloat> (FrequalizerAudioProcessor::getFrequencyParamName (i), TRANS ("Frequency"),
-                                                                    NormalisableRange<float> {20.0f, 20000.0f, 1.0f},
-                                                                    defaults [i].frequency,
-                                                                    TRANS ("Frequency"),
-                                                                    AudioProcessorParameter::genericParameter,
-                                                                    [](float value, int) { return (value < 1000) ?
-                                                                        String (value, 0) + " Hz" :
-                                                                        String (value / 1000.0, 2) + " kHz"; },
-                                                                    [](String text) { return text.endsWith(" kHz") ?
-                                                                        text.dropLastCharacters (4).getFloatValue() * 1000.0 :
-                                                                        text.dropLastCharacters (3).getFloatValue(); });
+        auto freqParameter = std::make_unique<AudioParameterFloat> (FrequalizerAudioProcessor::getFrequencyParamName (i), "Frequency", //name
+            NormalisableRange<float> {20.0f, 20000.0f, 1.0f},
+            defaults [i].frequency,
+            "Frequency", //label
+            AudioProcessorParameter::genericParameter, //category
+            [](float value, int) { return (value < 1000) ? String (value, 0) + " Hz" : String (value / 1000.0, 2) + " kHz"; },
+            [](String text) { return text.endsWith(" kHz") ? text.dropLastCharacters (4).getFloatValue() * 1000.0 : text.dropLastCharacters (3).getFloatValue(); });
 
-        auto qltyParameter = std::make_unique<AudioParameterFloat> (FrequalizerAudioProcessor::getQualityParamName (i), TRANS ("Quality"),
-                                                                    NormalisableRange<float> {0.1f, 10.0f, 1.0f},
-                                                                    defaults [i].quality,
-                                                                    TRANS ("Quality"),
-                                                                    AudioProcessorParameter::genericParameter,
-                                                                    [](float value, int) { return String (value, 1); },
-                                                                    [](const String& text) { return text.getFloatValue(); });
+        auto qltyParameter = std::make_unique<AudioParameterFloat> (FrequalizerAudioProcessor::getQualityParamName (i),
+            "Quality",
+            NormalisableRange<float> {0.1f, 10.0f, 1.0f},
+            defaults [i].quality,
+            "Quality",
+            AudioProcessorParameter::genericParameter,
+            [](float value, int) { return String (value, 1); },
+            [](const String& text) { return text.getFloatValue(); });
 
-        auto gainParameter = std::make_unique<AudioParameterFloat> (FrequalizerAudioProcessor::getGainParamName (i), TRANS ("Gain"),
-                                                                    NormalisableRange<float> {1.0f / maxGain, maxGain, 0.001f},
-                                                                    defaults [i].gain,
-                                                                    TRANS ("Band Gain"),
-                                                                    AudioProcessorParameter::genericParameter,
-                                                                    [](float value, int) {return String (Decibels::gainToDecibels(value), 1) + " dB";},
-                                                                    [](String text) {return Decibels::decibelsToGain (text.dropLastCharacters (3).getFloatValue());});
+        auto gainParameter = std::make_unique<AudioParameterFloat> (FrequalizerAudioProcessor::getGainParamName (i),
+            "Gain",
+            NormalisableRange<float> {1.0f / maxGain, maxGain, 0.001f},
+            defaults [i].gain,
+            "Band Gain",
+            AudioProcessorParameter::genericParameter,
+            [](float value, int) {return String (Decibels::gainToDecibels(value), 1) + " dB";},
+            [](String text) {return Decibels::decibelsToGain (text.dropLastCharacters (3).getFloatValue());});
 
-        auto actvParameter = std::make_unique<AudioParameterBool> (FrequalizerAudioProcessor::getActiveParamName (i), TRANS ("Active"),
-                                                                   defaults [i].active,
-                                                                   TRANS ("Band Active"),
-                                                                   [](float value, int) {return value > 0.5f ? TRANS ("active") : TRANS ("bypassed");},
-                                                                   [](String text) {return text == TRANS ("active");});
+        auto actvParameter = std::make_unique<AudioParameterBool> (FrequalizerAudioProcessor::getActiveParamName (i),
+            "Active",
+            defaults [i].active,
+            "Band Active",
+            [](float value, int) {return value > 0.5f ? "active" : "bypassed";},
+            [](String text) {return text == "active";});
 
         auto group = std::make_unique<AudioProcessorParameterGroup> ("band" + String (i), defaults [i].name, "|",
-                                                                     std::move (typeParameter),
-                                                                     std::move (freqParameter),
-                                                                     std::move (qltyParameter),
-                                                                     std::move (gainParameter),
-                                                                     std::move (actvParameter));
+            std::move (typeParameter),
+            std::move (freqParameter),
+            std::move (qltyParameter),
+            std::move (gainParameter),
+            std::move (actvParameter));
 
         params.push_back (std::move (group));
     }
 
     return { params.begin(), params.end() };
+  
 }
 
 //==============================================================================
@@ -240,6 +241,7 @@ void FrequalizerAudioProcessor::prepareToPlay (double newSampleRate, int newSamp
 {
     sampleRate = newSampleRate;
 
+    //dsp::ProcessSpec struct
     dsp::ProcessSpec spec;
     spec.sampleRate = newSampleRate;
     spec.maximumBlockSize = uint32 (newSamplesPerBlock);
@@ -253,9 +255,10 @@ void FrequalizerAudioProcessor::prepareToPlay (double newSampleRate, int newSamp
     updatePlots();
 
     filter.prepare (spec);
-
+    
     inputAnalyser.setupAnalyser  (int (sampleRate), float (sampleRate));
     outputAnalyser.setupAnalyser (int (sampleRate), float (sampleRate));
+    
 }
 
 void FrequalizerAudioProcessor::releaseResources()
@@ -282,14 +285,15 @@ void FrequalizerAudioProcessor::processBlock (AudioBuffer<float>& buffer, MidiBu
 
     if (getActiveEditor() != nullptr)
         inputAnalyser.addAudioData (buffer, 0, getTotalNumInputChannels());
-
+    
     if (wasBypassed) {
         filter.reset();
         wasBypassed = false;
     }
-    dsp::AudioBlock<float>              ioBuffer (buffer);
+    
+    dsp::AudioBlock<float>              ioBuffer (buffer); //block
     dsp::ProcessContextReplacing<float> context  (ioBuffer);
-    filter.process (context);
+    filter.process (context); //process context replacing
 
     if (getActiveEditor() != nullptr)
         outputAnalyser.addAudioData (buffer, 0, getTotalNumOutputChannels());
@@ -533,6 +537,11 @@ AudioProcessorEditor* FrequalizerAudioProcessor::createEditor()
 {
     return new FrequalizerAudioProcessorEditor (*this);
 }
+
+/*const std::vector<double>& FrequalizerAudioProcessor::getMagnitudes ()
+{
+    return magnitudes;
+}*/
 
 const std::vector<double>& FrequalizerAudioProcessor::getMagnitudes ()
 {
